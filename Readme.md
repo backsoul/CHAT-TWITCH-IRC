@@ -1,5 +1,6 @@
 Custom Chat twitch realtime 
 
+
 # Setup
 
 ### Get OAuth Token Twitch
@@ -21,5 +22,10 @@ Custom Chat twitch realtime
 ```bash
 docker-compose up -d
 ```
+Link chat local:
 
 http://localhost:3000/?irc=**********************************
+
+
+### Example
+Add plugin navegator in obs (url) and apply effect chroma green: http://twitch.backsoul.xyz/
