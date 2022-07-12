@@ -1,0 +1,79 @@
+#connectionStablished {
+    margin: 3rem;
+    width: 29rem;
+    height: 30rem;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 11px 9px 27px -14px #1026ffc2;
+    background: url(bg.jpeg);
+    background-attachment: inherit;
+    background-repeat: round;
+    border: 1px solid #0e0c4c;
+    animation: animationChat 4s infinite;
+}
+
+
+@keyframes animationChat {
+    0% {
+        transform: scale(1.05);
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: scale(1);
+        transform: rotate(1deg);
+    }
+    100% {
+        transform: scale(1.05);
+        transform: rotate(-1deg);
+    }
+}
+
+#listMessages {
+    width: 100%;
+    list-style: none;
+    overflow: hidden;
+}
+
+li {
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    font-weight: bolder;
+    -webkit-animation: fade 1s;
+    animation: fade 1s;
+    opacity: 1;
+}
+
+/* -fail- */
+@-webkit-keyframes fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.nickName {
+    font-family: sans-serif;
+    font-weight: 800;
+    color: white;
+    box-shadow: 1px 12px 29px -9px black;
+}
+
+html {
+    background-color: transparent;
+}

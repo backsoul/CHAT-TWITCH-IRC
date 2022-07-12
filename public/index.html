@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>examole socket io with bot chat twitch</title>
+</head>
+
+<body>
+    <h2 id="statusText" style="color: white;">OFFLINE</h2>
+    <div id="connectionStablished" style="display: none">
+        <h3 class="nickName">BACKSOUL</h3>
+        <ul id="listMessages">
+        </ul>
+    </div>
+    <script>
+        var statusText = document.getElementById("statusText")
+        var socket = new WebSocket("ws://irc-ws.chat.twitch.tv:80");
+        var connectionNotEstablished = document.getElementById("connectionNotEstablished")
+        var connectionStablished = document.getElementById("connectionStablished")
+        var listMessages = document.getElementById("listMessages")
+        socket.onopen = function (connection) {
+            var query = getQueryParams(document.location.search);
+            socket.send(`PASS oauth:${query.irc}`);
+            socket.send('NICK backsoul_');
+            socket.send('JOIN #backsoul_');
+        }
+        socket.onmessage = function (event) {
+            console.log(event)
+            if (event.data.includes('Login authentication failed')) {
+                statusText.innerHTML = 'Login authentication failed'
+            }
+
+            if (event.data.includes(':Welcome, GLHF!\r\n:tmi.twitch.tv')) {
+                statusText.innerHTML = ''
+                connectionStablished.style.display = 'flex';
+            }
+
+            if (event.data.includes(':backsoul_!backsoul_@backsoul_.tmi.twitch.tv PRIVMSG #')) {
+                textMessage = event.data.split(':backsoul_!backsoul_@backsoul_.tmi.twitch.tv PRIVMSG #')[1]
+                var message = document.createElement("li");
+                message.style.color = randomColor()
+                message.appendChild(document.createTextNode(textMessage))
+                listMessages.appendChild(message)
+                listMessages.scrollBy(0,20)
+            }
+        }
+
+        function randomColor() {
+            return '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
+        }
+
+        function getQueryParams(qs) {
+            qs = qs.split('+').join(' ');
+            var params = {},
+                tokens,
+                re = /[?&]?([^=]+)=([^&]*)/g;
+            while (tokens = re.exec(qs)) {
+                params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+            }
+            return params;
+        }
+    </script>
+</body>
+
+</html>
