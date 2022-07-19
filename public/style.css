@@ -1,17 +1,11 @@
 #connectionStablished {
-    margin: 3rem;
-    width: 29rem;
-    height: 30rem;
+    margin: 6rem;
+    height: -15rem;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     border-radius: 1rem;
-    box-shadow: 11px 9px 27px -14px #1026ffc2;
-    background: url(bg.jpeg);
-    background-attachment: inherit;
-    background-repeat: round;
-    border: 1px solid #0e0c4c;
-    animation: animationChat 4s infinite;
+
 }
 
 
@@ -32,48 +26,74 @@
 }
 
 #listMessages {
-    width: 100%;
-    list-style: none;
+  justify-content: center;
+    /* background: #f5f5f5; */
+    perspective: 25rem;
+    flex-direction: column;
+    width: 28rem;
+    list-style: initial;
     overflow: hidden;
+    height: 40rem;
+    padding: 6rem;
 }
 
 li {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
     font-family: sans-serif;
     font-weight: bolder;
     -webkit-animation: fade 1s;
     animation: fade 1s;
     opacity: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transform: rotateY(22deg);
+    width: 100%;
+    overflow: hidden;
+    margin: 7px;
 }
 
 /* -fail- */
 @-webkit-keyframes fade {
     from {
-        opacity: 0
+        opacity: 0;
+        filter: blur(1px);
     }
 
     to {
-        opacity: 1
+        opacity: 1;
+        filter: blur(0px);
     }
 }
 
 @keyframes fade {
     from {
-        opacity: 0
+        opacity: 0;
+        filter: blur(1px);
     }
 
     to {
-        opacity: 1
+        opacity: 1;
+        filter: blur(0px);
     }
 }
 
 .nickName {
-    font-family: sans-serif;
+  font-family: sans-serif;
     font-weight: 800;
-    color: white;
-    box-shadow: 1px 12px 29px -9px black;
+    text-align: center;
+}
+
+p{
+  color: rgb(132, 246, 183);
+    font-size: 15px;
+    font-weight: bold;
+}
+h6{
+  margin: 0px;
 }
 
 html {
     background-color: transparent;
 }
+
